@@ -1,0 +1,64 @@
+[project]
+name = 'fast-zero'
+version = '0.1.0'
+description = 'just a fastapi project'
+authors = [
+    {name = 'Rodrigo Paterlini', email = 'rodpater@gmail.com'}
+]
+readme = 'README.md'
+requires-python = '==3.13.*'
+dependencies = [
+    'fastapi[standard] (>=0.115.12,<0.116.0)'
+]
+
+[tool.poetry.group.dev.dependencies]
+ruff = '^0.11.8'
+pytest = '^8.3.5'
+taskipy = '^1.14.1'
+pydantic-settings = '^2.9.1'
+pytest-cov = "^6.1.1"
+
+[tool.pytest.ini_options]
+pythonpath = '.'
+addopts = '-p no:warnings'
+norecursedirs = '.venv'
+
+[tool.coverage.run]
+omit = [
+    '.venv/*',
+    'migrations'
+]
+
+[tool.coverage.report]
+skip_empty = true
+
+
+[tool.ruff]
+line-length = 88
+exclude = [
+    'migrations',
+    'tests',
+    '__init__.py',
+    '.git',
+    '.venv',
+    'docs',  # Added exclusion for docs directory
+]
+
+[tool.ruff.lint]
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.taskipy.tasks]
+run = 'fastapi dev fast_zero/app.py'
+pre_test = 'task lint'
+test = 'pytest -s -x --cov=fast_zero -vv'
+post_test = 'coverage html'
+lint = 'ruff check . ; ruff check . --diff'
+format = 'ruff check . --fix ; ruff format .'
+
+[build-system]
+requires = ['poetry-core>=2.0.0,<3.0.0']
+build-backend = 'poetry.core.masonry.api'
