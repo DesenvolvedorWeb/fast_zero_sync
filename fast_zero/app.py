@@ -1,11 +1,15 @@
 """FastZero Application"""
 
-from fastapi import FastAPI  # type: ignore
+from http import HTTPStatus
+
+from fastapi import FastAPI
+
+from fast_zero.schemas import Message
 
 app = FastAPI()
 
 
-@app.get('/')
+@app.get('/', status_code=HTTPStatus.OK, response_model=Message)
 def read_root():
     """
     This function reads the root directory of the FastZero application.
