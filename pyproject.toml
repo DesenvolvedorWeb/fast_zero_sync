@@ -21,12 +21,13 @@ pytest-cov = "^6.1.1"
 [tool.pytest.ini_options]
 pythonpath = '.'
 addopts = '-p no:warnings'
-norecursedirs = '.venv'
+norecursedirs = '.venv fast_zero_sync'
 
 [tool.coverage.run]
 omit = [
     '.venv/*',
-    'migrations'
+    'migrations',
+    'fast_zero_sync/*'
 ]
 
 [tool.coverage.report]
