@@ -11,7 +11,7 @@ def client():
     return TestClient(app)
 # Compare this snippet from fast_zero/schemas.py:
 
-p
+
 def test_read_root(client):
     response = client.get("/")  # - Act
     assert response.status_code == HTTPStatus.OK # - Assert
