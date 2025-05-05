@@ -1,5 +1,6 @@
 """FastZero Application"""
 
+from collections import UserList
 from http import HTTPStatus
 
 from fastapi import FastAPI
@@ -33,3 +34,11 @@ def create_user(user: UserSchema):
     database.append(user_with_id)
 
     return user_with_id
+
+
+@app.get('/users/', response_model=UserList)
+def read_users():
+    """
+    This function retrieves all users.
+    """
+    return {'users': database}
