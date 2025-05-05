@@ -1,11 +1,10 @@
 """FastZero Application"""
 
-from collections import UserList
 from http import HTTPStatus
 
 from fastapi import FastAPI
 
-from fast_zero.schemas import Message, UserInDB, UserPublic, UserSchema
+from fast_zero.schemas import Message, UserInDB, UserList, UserPublic, UserSchema
 
 app = FastAPI()
 

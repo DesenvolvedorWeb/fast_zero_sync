@@ -21,18 +21,16 @@ pytest-cov = "^6.1.1"
 [tool.pytest.ini_options]
 pythonpath = '.'
 addopts = '-p no:warnings'
-norecursedirs = '.venv fast_zero_sync'
+norecursedirs = '.venv'
 
 [tool.coverage.run]
 omit = [
     '.venv/*',
-    'migrations',
-    'fast_zero_sync/*'
+    'migrations'
 ]
 
 [tool.coverage.report]
 skip_empty = true
-
 
 [tool.ruff]
 line-length = 88
@@ -42,7 +40,7 @@ exclude = [
     '__init__.py',
     '.git',
     '.venv',
-    'docs',  # Added exclusion for docs directory
+    'docs'
 ]
 
 [tool.ruff.lint]
